@@ -3,54 +3,68 @@
     padding:0px;
     margin:0px;
 }
-/*as a background i want to use the white shades and some round transition between them*/
+html{
+    --darkBlue: #0c2542;
+    --orange: #ffb019;
+}
 
 body{
-    background-color: rgb(51, 51, 51);
-    color:white;
+    /* border:2px solid red; */
+    min-height:95vh;
+    font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
 }
-#root{
-    display:flex;
-    flex-direction: column;
-    width:100%;
-}
+/*Header section styles*/
 .header{
-    background: rgb(9,0,156);
-    background: linear-gradient(73deg, rgba(9,0,156,1) 4%, rgba(18,18,200,1) 26%,
-     rgba(0,212,255,1) 100%);
+    background-color: var(--darkBlue);
+    color: var(--orange);
     padding:15px;
-    margin-bottom: 15px;
-    box-shadow: 0px 5px 10px rgb(0, 0, 0);
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0px 5px 10px var(--darkBlue);
+}
+.header img{
+    margin-left: auto;
 }
 
-form{
-    width:75%;
-    display: flex;
-    flex-direction: column;
-    gap:25px;
-    margin: auto;
-}
-.personalInfo, .educationForm, .workExp{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap:25px;
-}
-.workExp div:last-child{
-    grid-column:1/span 2
-}
-/*animating inputs*/
-.inputContainer{
-    color: rgb(198, 198, 198);
-    background-color: rgba(255, 255, 255, 0.3);
-    padding:5px;
+
+
+
+/*section declaration*/
+
+.Account_logIn{
     display:flex;
     flex-direction: column;
-    border-radius: 15px 15px 1px 0px;
-    transition:.2s;
-    position:relative;
+    width:75%;
+    margin: auto;
+    /* border:2px solid red; */
+    align-items: center;
+    margin-top: 50px;
 }
-.inputContainer::after{
+.Account_logIn form{
+    color: var(--orange);
+    background-color: var(--darkBlue);
+    padding:15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction:column;
+    width: 65%;
+    box-shadow: 0px 5px 10px var(--darkBlue);
+    gap:15px;
+}
+
+/*input styling*/
+.Login_input{
+    display:flex;
+    flex-direction: column;
+    background-color: #5a6c82;
+    border-radius: 10px 10px 0px 0px;
+    padding:5px;
+    position: relative;
+    z-index: 1;
+}
+.Login_input::after{
     position:absolute;
     content:'';
     right:0;
@@ -58,74 +72,78 @@ form{
     bottom:0;
     height:2px;
     background-color:white;
-    z-index: -1;
+    z-index: 2;
 }
-.inputContainer::before{
+.Login_input::before{
     position: absolute;
-    content: '';
+    content:'';
     right:0;
     left:0;
     bottom:0;
-    height:2px;
-    background-color: rgb(11, 0, 222);
-    transform-origin: center;
-    transition:.3s ease-in-out;
+    height: 2px;
+    background-color: var(--orange);
     transform: scaleX(0);
+    transition: .3s ease-in-out;
+    z-index: 4;
 }
-.inputContainer:focus-within{
-    color:  rgb(11, 0, 222);
-    transition:.3s;
-}
-.inputContainer:focus-within::before{
-    transform-origin: center;
+.Login_input:focus-within::before{
     transform: scaleX(100%);
-    transition: .2s;
+    transition: .3s ease-in-out;
 }
-.inputContainer:hover{
-    background-color: rgba(255, 255, 255, 0.4);
-    transition:.2s;
-}
-.inputContainer input{
-    width:90%;
-    padding:10px;
+.Login_input input{
+    font-size: large;
     background-color: transparent;
-    border:none;
+    border: none;
+    height:25px;
     outline:none;
-    color:white;
-    font-size: larger;
+    padding:5px;
+    cursor: pointer;
 }
-/*animating the preview Button*/
-.previewButton{
-    padding:15px;
-    width: 60%;
+
+/**LoginBtn*/
+.Account_logIn button{
     margin: auto;
+    width: 40%;
+    height:50px;
+    border-radius:10px;
+    border:none;
+    font-size: larger;
     position: relative;
     z-index: 1;
-    font-size: larger;
-    border: none;
+    cursor: pointer;
 }
-.previewButton:before{
-    content:'';
-    position:absolute;
+.Account_logIn button:before{
+    content: '';
+    background-color: var(--orange);
+    position: absolute;
+    border-radius:10px;
     top:0;
     right:0;
-    left:0; 
+    left:0;
     bottom:0;
-    background-color:  rgb(11, 0, 222);
     z-index: -1;
-    transform:scaleX(0);
-    transform-origin: left;
+    transform: scaleX(0);
+    transform-origin: center;
     transition: .3s ease-in-out;
 }
-.previewButton:hover:before{
-    transform:scaleX(100%);
+.Account_logIn button:hover::before{
+    transform: scaleX(100%);
     transition: .3s ease-in-out;
+} 
+
+span{
+    cursor: pointer;
 }
-.previewButton:hover{
-    color:white;
-    transition:.3s ease-in-out
+
+/*Mobile support*/
+@media screen and (max-width:650px) {
+    body{
+        font-size: smaller;
+    }
+    img{
+        height:75px;
+    }
+    .Account_logIn{
+        width: 100%;
+    }
 }
-
-/*defining how a section will be displayed */
-
-
