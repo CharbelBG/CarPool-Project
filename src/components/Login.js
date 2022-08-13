@@ -7,7 +7,7 @@ import SingUp from './FormComponents/SignUp';
 export default function Login(){
     //create a state that will handle rendering the 2 sections
     //create the state that loads them here, the sign up and the login pages.
-    const [hasAnAccount, setHasAnAcccount] = React.useState(false);
+    const [hasAnAccount, setHasAnAcccount] = React.useState(true);
     function toogleSignIn(){
         console.log('changing window');
         setHasAnAcccount(oldValue => !oldValue);

@@ -13,6 +13,7 @@ body{
     min-height:95vh;
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 25px;
 }
 /*Header section styles*/
 .header{
@@ -98,7 +99,35 @@ body{
     outline:none;
     padding:5px;
     cursor: pointer;
+    background-image: none;
 }
+/*Invalid input.*/
+.Login_input input.invalid{ /*add an X in the backround image when the input is incorrect*/
+    background-image: url(./components/img/x.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 25px;
+    color:red;
+}
+.Account_logIn p{
+    font-size: medium;
+    color: red;
+}
+/* 
+.Login_input input:valid{
+    background-image: url(./components/img/tick.svg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 25px;
+    transition:.2s ease-in-out;
+}
+.Login_input input:invalid::before{
+    content:'invalid';
+} */
+
+
+
+
 
 /**LoginBtn*/
 .Account_logIn button{
@@ -129,12 +158,27 @@ body{
 .Account_logIn button:hover::before{
     transform: scaleX(100%);
     transition: .3s ease-in-out;
-} 
+}
 
 span{
     cursor: pointer;
 }
 
+
+
+
+/*Login ComboBox*/
+.Login_input select{
+    width:50%;
+    height:35px;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: medium;
+}
+.Login_input option{
+    background-color:#5a6c82;
+    font-size: larger;
+    color:var(--orange);
+}
 /*Mobile support*/
 @media screen and (max-width:650px) {
     body{
@@ -145,5 +189,11 @@ span{
     }
     .Account_logIn{
         width: 100%;
+    }
+    .Account_logIn button{
+        font-size: small;
+    }
+    .Login_input select{
+        font-size: small;
     }
 }
